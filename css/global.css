@@ -1,16 +1,17 @@
 /* =========================================
-   VARIABLES GLOBALES (Estilo CRM Enterprise)
+   VARIABLES GLOBALES (Estilo Moderno Índigo)
    ========================================= */
 :root {
-    --primary: #032d60; /* Azul marino profundo corporativo */
-    --accent: #0176d3;  /* Azul de acción (estilo Salesforce) */
-    --bg: #f3f2f2;      /* Fondo gris suave anti-fatiga visual */
-    --text: #080707;    /* Texto principal oscuro */
-    --text-muted: #706e6b; /* Texto secundario */
-    --card-bg: #ffffff;
-    --border: #dddbda;  /* Bordes definidos y limpios */
-    --hover-bg: #f4f6f9;
-    --success: #2e844a; /* Verde de confirmación */
+    --primary: #312e81; /* Morado/Índigo institucional profundo */
+    --accent: #4f46e5;  /* Índigo de acción/acento */
+    --bg: #f0f4f8;      /* Fondo gris azulado con más presencia */
+    --text: #1e293b;    /* Texto principal oscuro (Slate 800) */
+    --text-muted: #64748b; /* Texto secundario (Slate 500) */
+    --card-bg: #ffffff; /* Fondo de tarjetas y contenedores */
+    --border: #e2e8f0;  /* Bordes suaves (Slate 200) */
+    --hover-bg: #f8fafc; /* Color de hover para tablas */
+    --success: #10b981; /* Verde esmeralda (Éxito) */
+    --danger: #ef4444;  /* Rojo (Eliminar/Error) */
 }
 
 /* =========================================
@@ -33,10 +34,10 @@ body {
 
 .content-box { 
     background: var(--card-bg); 
-    padding: 24px; 
-    border-radius: 4px; /* Bordes menos redondeados, más serios */
+    padding: 35px 25px; 
+    border-radius: 16px; /* Bordes más redondeados alineados con el index */
     border: 1px solid var(--border);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra muy sutil */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     margin-bottom: 24px;
 }
 
@@ -44,45 +45,73 @@ body {
    BARRA DE NAVEGACIÓN
    ========================================= */
 .navbar { 
-    background-color: var(--card-bg); 
-    color: var(--primary); 
-    padding: 15px 30px; 
+    background-color: var(--primary); 
+    padding: 18px 40px; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    border-bottom: 2px solid var(--accent); /* Línea de acento superior */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+    box-shadow: 0 4px 12px rgba(49, 46, 129, 0.15); 
 }
 
 .navbar h1 { 
     margin: 0; 
     font-size: 20px; 
-    font-weight: 700; 
+    font-weight: 800; 
+    color: #ffffff; /* Texto blanco para el menú superior */
     letter-spacing: -0.5px;
 }
 
 .user-profile { 
-    font-size: 13px; 
-    font-weight: 600; 
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   ENCABEZADOS DE MÓDULOS
+   ========================================= */
+/* Úsalo en tus páginas internas para mantener el estilo del Dashboard */
+.page-header {
+    margin-bottom: 30px; 
+    border-left: 4px solid var(--accent); /* Línea de acento lateral */
+    padding-left: 20px;
+}
+
+.page-header h2 { 
+    margin: 0 0 6px 0; 
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text); 
+}
+
+.page-header p {
+    margin: 0;
     color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 /* =========================================
    BOTONES
    ========================================= */
 .btn-back { 
-    display: inline-block; 
+    display: inline-flex; 
+    align-items: center;
     margin-bottom: 20px; 
     color: var(--accent); 
     text-decoration: none; 
     font-size: 14px;
-    font-weight: 600; 
+    font-weight: 700; 
+    transition: color 0.2s ease;
 }
 
 .btn-back:hover { 
-    text-decoration: underline; 
+    color: var(--primary); 
 }
 
 button { 
@@ -92,15 +121,16 @@ button {
     padding: 10px 18px; 
     font-size: 14px; 
     font-weight: 600; 
-    border-radius: 4px; 
+    border-radius: 8px; /* Botones un poco más redondeados */
     cursor: pointer; 
     width: 100%; 
     transition: all 0.2s ease-in-out; 
 }
 
 button:hover { 
-    background-color: #015ba7; /* Tono más oscuro al pasar el cursor */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #4338ca; /* Indigo ligeramente más oscuro */
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+    transform: translateY(-1px);
 }
 
 /* =========================================
@@ -124,12 +154,13 @@ label {
     font-size: 12px; 
     color: var(--text-muted);
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 input, select { 
-    padding: 10px 12px; 
+    padding: 12px 14px; 
     border: 1px solid var(--border); 
-    border-radius: 4px; 
+    border-radius: 8px; /* Campos de texto más modernos */
     font-size: 14px; 
     color: var(--text);
     outline: none; 
@@ -139,7 +170,7 @@ input, select {
 
 input:focus, select:focus { 
     border-color: var(--accent); 
-    box-shadow: 0 0 3px rgba(1, 118, 211, 0.4); /* Glow de enfoque estilo CRM */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); /* Efecto halo ("glow") suavizado */
 }
 
 /* =========================================
@@ -154,18 +185,22 @@ table {
 
 th, td { 
     border-bottom: 1px solid var(--border); 
-    padding: 12px 15px; 
+    padding: 14px 16px; 
     text-align: left; 
 }
 
 th { 
-    background-color: #fafaf9; 
+    background-color: var(--hover-bg); 
     color: var(--text-muted); 
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 0.5px;
     border-top: 1px solid var(--border);
+}
+
+tbody tr {
+    transition: background-color 0.15s;
 }
 
 tbody tr:hover {

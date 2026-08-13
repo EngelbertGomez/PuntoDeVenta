@@ -5,18 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportes - Kambio POS</title>
     <link rel="stylesheet" href="../css/global.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 24px; }
+        .metric-card { background: white; padding: 25px; border-radius: 8px; border: 1px solid var(--border); border-left: 5px solid var(--accent); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .metric-title { font-size: 13px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
+        .metric-value { font-size: 28px; font-weight: 800; color: var(--primary); margin: 0; }
+        
+        .dashboard-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 24px; }
+        .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+        .chart-container { background: white; padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+        
+        @media (max-width: 1024px) {
+            .dashboard-layout, .charts-row { grid-template-columns: 1fr; }
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .btn-volver { 
+            text-decoration: none; 
+            color: #64748b; 
+            font-weight: 600; 
+            font-size: 14px; 
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            transition: all 0.2s;
+        }
+        .btn-volver:hover { color: var(--accent); transform: translateY(-2px); }
+        
+        .search-container {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            width: 300px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+    </style>
 </head>
 <body>
+    <main class="main-content">
+
+        
     <nav class="navbar">
-        <h1>Kambio POS</h1>
-        <div class="user-profile">Módulo: Reportes</div>
+        <h1>Kambio POS & Business Network</h1>
+        <div class="user-profile">Usuario: Admin</div>
     </nav>
-    <div class="container">
-        <a href="../index.html" class="btn-back">← Volver al Dashboard</a>
-        <div class="content-box">
-            <h2>Métricas y Reportes</h2>
-            <p>Aquí visualizaremos las ventas diarias, stock bajo y líneas de crédito B2B utilizadas.</p>
+
+    <div class="top-header">
+            <a href="../index.html" class="btn-volver">
+                <span>←</span> Volver al Dashboard
+            </a>
         </div>
-    </div>
+
+    <main class="main-content">
+        <div class="main-header">
+            <h2> Analíticas y Cierre de Caja</h2>
+        </div>
+        
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-title">Ingresos Totales (DOP)</div>
+                <h3 class="metric-value" id="lblIngresos">RD$ 0.00</h3>
+            </div>
+            <div class="metric-card" style="border-left-color: var(--success);">
+                <div class="metric-title">Facturas Emitidas</div>
+                <h3 class="metric-value" id="lblCantidadVentas">0</h3>
+            </div>
+            <div class="metric-card" style="border-left-color: #f59e0b;">
+                <div class="metric-title">Ticket Promedio</div>
+                <h3 class="metric-value" id="lblTicketPromedio">RD$ 0.00</h3>
+            </div>
+        </div>
+
+        <div class="dashboard-layout">
+            <div class="chart-container">
+                <h3 style="margin-top: 0; color: var(--primary); font-size: 16px;">Ingresos por Día</h3>
+                <canvas id="lineChart" height="100"></canvas>
+            </div>
+
+            <div class="content-box" style="margin-bottom: 0;">
+                <h3 style="margin-top: 0; color: var(--primary); font-size: 16px;">Últimas Transacciones</h3>
+                <table style="font-size: 13px;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaUltimasVentas"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Fila de gráficas nuevas -->
+        <div class="charts-row">
+            <div class="chart-container">
+                <h3 style="margin-top: 0; color: var(--primary); font-size: 16px;">Tráfico: Facturas por Día</h3>
+                <canvas id="barChart" height="150"></canvas>
+            </div>
+            <div class="chart-container" style="display: flex; flex-direction: column; align-items: center;">
+                <h3 style="margin-top: 0; color: var(--primary); font-size: 16px; width: 100%;">Ventas por Método de Pago</h3>
+                <div style="width: 60%; margin-top: 10px;">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/reportes.js"></script>
 </body>
 </html>
