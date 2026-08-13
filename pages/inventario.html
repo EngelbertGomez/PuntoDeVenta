@@ -20,7 +20,7 @@
             <div class="form-grid">
                 <div class="form-group">
                     <label for="nombre">Descripción de la Pieza</label>
-                    <input type="text" id="nombre" required placeholder="Ej. Filtro de Aceite sintético">
+                    <input type="text" id="nombre" required placeholder="Ej. Monitor curvo">
                 </div>
                 <div class="form-group">
                     <label for="codigoBarras">Código de Barras</label>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label for="stock">Existencia en Almacén</label>
-                    <input type="number" id="stock" required placeholder="15">
+                    <input type="number" id="stock" required placeholder="10">
                 </div>
             </div>
             <button type="submit">Guardar Producto en Base de Datos</button>
@@ -46,6 +46,7 @@
                     <th>Código</th>
                     <th>Precio</th>
                     <th>Existencia</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody id="tablaProductos">
