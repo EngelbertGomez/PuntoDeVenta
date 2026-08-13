@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal de Ventas - Kambio POS</title>
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Kambio POS</h1>
+        <div class="user-profile">Módulo: Terminal de Ventas</div>
+    </nav>
+
+    <div class="container">
+        <a href="../index.html" class="btn-back">← Volver al Dashboard</a>
+        
+        <div class="pos-grid">
+            <!-- Columna Izquierda: Carrito de Compras -->
+            <div class="content-box">
+                <input type="text" class="search-bar" placeholder="🔍 Buscar producto por nombre o escanear código de barras...">
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Cant.</th>
+                            <th>Precio</th>
+                            <th>Subtotal</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="carritoBody">
+                        <!-- Los productos escaneados aparecerán aquí -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Columna Derecha: Facturación y Pago -->
+            <div class="content-box">
+                <h3 style="margin-top: 0; color: var(--primary);">Detalles de Facturación</h3>
+                
+                <div class="form-group">
+                    <label for="tipoNcf">Tipo de Comprobante (NCF)</label>
+                    <select id="tipoNcf">
+                        <option value="consumo">Consumo Final</option>
+                        <option value="credito_fiscal">Crédito Fiscal (B2B)</option>
+                        <option value="gubernamental">Gubernamental</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="clienteAutocash">Cliente AutoCash (Cédula/RNC)</label>
+                    <input type="text" id="clienteAutocash" placeholder="Ingresar para sumar/canjear puntos">
+                </div>
+
+                <div class="form-group">
+                    <label for="metodoPago">Método de Pago</label>
+                    <select id="metodoPago">
+                        <option value="efectivo">Efectivo</option>
+                        <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                        <option value="credito_corporativo">Crédito Corporativo (Flotas)</option>
+                    </select>
+                </div>
+
+                <div class="total-section">
+                    Total: DOP $0.00
+                </div>
+
+                <button class="btn-pay">Procesar Pago</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

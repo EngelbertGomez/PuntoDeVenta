@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - Kambio POS</title>
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Kambio POS</h1>
+        <div class="user-profile">Módulo: Inventario Nacional</div>
+    </nav>
+
+    <div class="container">
+        <a href="../index.html" class="btn-back">← Volver al Dashboard</a>
+        <h2 style="color: var(--primary); margin-top: 0;">Gestión de Productos y Repuestos</h2>
+        
+        <form id="productForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nombre">Descripción de la Pieza</label>
+                    <input type="text" id="nombre" required placeholder="Ej. Filtro de Aceite sintético">
+                </div>
+                <div class="form-group">
+                    <label for="codigoBarras">Código de Barras</label>
+                    <input type="text" id="codigoBarras" required placeholder="1234567890123">
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio Unitario (DOP)</label>
+                    <input type="number" id="precio" step="0.01" required placeholder="1500.00">
+                </div>
+                <div class="form-group">
+                    <label for="stock">Existencia en Almacén</label>
+                    <input type="number" id="stock" required placeholder="15">
+                </div>
+            </div>
+            <button type="submit">Guardar Producto en Base de Datos</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Código</th>
+                    <th>Precio</th>
+                    <th>Existencia</th>
+                </tr>
+            </thead>
+            <tbody id="tablaProductos">
+                <!-- Data inyectada desde la API .NET -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Script dedicado solo al inventario -->
+    <script src="../js/inventario.js"></script>
+</body>
+</html>
